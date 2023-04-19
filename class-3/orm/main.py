@@ -7,7 +7,7 @@ from dataset.data import coins, historical_records
 from database import CONFIG
 
 engine = create_engine(
-    "mysql+mysqlconnector://%s:%s@localhost:3306/%s" %
+    "mysql+mysqlconnector://%s:%s@localhost:3307/%s" %
     (CONFIG['DB_USER'], CONFIG['DB_PASSWORD'], CONFIG['DB_NAME'])
 )
 

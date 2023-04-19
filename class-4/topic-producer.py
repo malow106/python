@@ -5,37 +5,37 @@ from server import channel
 QUEUES = [
     {
         "name": "queue-a",
-        "topic": "a"
+        "routing_key": "a"
     },
     {
         "name": "queue-b",
-        "topic": "b"
+        "routing_key": "b"
     },
     {
         "name": "queue-c",
-        "topic": "c"
+        "routing_key": "c"
     }
 ]
 
 EVENTS = [
     {
-        "topic": "a",
+        "routing_key": "a",
         "body": "event 1"
     },
     {
-        "topic": "b",
+        "routing_key": "b",
         "body": "event 1"
     },
     {
-        "topic": "c",
+        "routing_key": "c",
         "body": "event 1"
     },
     {
-        "topic": "a",
+        "routing_key": "a",
         "body": "event 2"
     },
     {
-        "topic": "b",
+        "routing_key": "b",
         "body": "event 2"
     }
 ]
@@ -43,16 +43,16 @@ EVENTS = [
 EXCHANGE_NAME = "topic-exchange-hello-world"
 
 # create exchange
-channel.exchange_declare(EXCHANGE_NAME, durable=True, exchange_type='topic')
+channel.exchange_declare(EXCHANGE_NAME, durable=True, exchange_type='routing_key')
 
 # create queues
 for queue in QUEUES:
     channel.queue_declare(queue=queue['name'])
-    channel.queue_bind(exchange=EXCHANGE_NAME, queue=queue['name'], routing_key=queue['topic'])
+    channel.queue_bind(exchange=EXCHANGE_NAME, queue=queue['name'], routing_key=queue['routing_key'])
 
 
 # publish event
 for event in EVENTS:
-    channel.basic_publish(exchange=EXCHANGE_NAME, routing_key=event['topic'], body=event['body'])
+    channel.basic_publish(exchange=EXCHANGE_NAME, routing_key=event['routing_key'], body=event['body'])
     time.sleep(2)
-    print(f"[x] published event `{event['body']}` in topic `{event['topic']}`")
+    print(f"[x] published event `{event['body']}` in routing_key `{event['routing_key']}`")

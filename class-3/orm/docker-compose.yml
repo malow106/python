@@ -11,11 +11,12 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
     expose:
       - '3306'
     volumes:
       - db:/var/lib/mysql
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.2.0
     container_name: pma
