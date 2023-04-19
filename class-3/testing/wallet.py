@@ -16,6 +16,13 @@ class Wallet:
         if self.balance == 0:
             return True
         return False
+<<<<<<< Updated upstream
+=======
+
+    def withdraw(self,amount):
+        self.balance -= amount
+        
+>>>>>>> Stashed changes
 
     def has_debt(self):
         pass

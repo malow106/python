@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 class-3/**/venv
 .idea
 .env
 venv
 *.pyc
+=======
+venv
+>>>>>>> Stashed changes

@@ -27,6 +27,9 @@ def test_add_founds(wallet):
     wallet.add_founds(amount)
     assert wallet.balance == amount + OPENING_BALANCE
 
+def test_withdraw(wallet):
+    wallet.withdraw
+    
 
 @pytest.mark.parametrize("amount", [-2, -50])
 def test_add_negative_founds(wallet, amount):
